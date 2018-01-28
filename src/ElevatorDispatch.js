@@ -3,6 +3,9 @@ const Elevator = require('./Elevator');
 module.exports = class ElevatorDispatch {
     constructor(elevatorCount, floorCount) {
         this.elevators = [];
+        for (let i = 0; i < elevatorCount; i++) {
+            this.elevators.push(new Elevator(floorCount));
+        }
         // initialize and push elevator instances to array
     }
     getElevatorUnoccupiedCurrentFl(floor) {

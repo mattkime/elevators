@@ -24,13 +24,16 @@ module.exports = class Elevator {
         // fire event on next floor
         // repeat until at target floor
 
-        //open doors
+        this.open();
+        // fire event if no longe in service
     }
     open() {
         // report opening doors
+        // fire event
     }
     close() {
         //report closing doors
+        // fire event
     }
     isInService() {
         return this.tripsSinceService <= 100;
