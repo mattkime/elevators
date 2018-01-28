@@ -19,6 +19,10 @@ module.exports = class Elevator extends EventEmitter {
             throw Error("Elevator out of service");
         }
         if (this.currentFloor == targetFloor) { return; }
+
+        // 'trips' could be defined a bit better
+        // is a trip based on coming to a given floor, and taking someone to another floor?
+        // or every time the doors open? Trips can overlap
         this.tripsMade++;
         this.tripsSinceService++;
         // compare targetFloor to currentFloor
@@ -27,14 +31,13 @@ module.exports = class Elevator extends EventEmitter {
         // repeat until at target floor
 
         this.open();
-        // fire event if no longe in service
+        // fire event if no longer in service
         if (!isInService()) {
             this.emit('outOfService', this);
         }
     }
     open() {
         // report opening doors
-        // fire event
         this.emit('open', this);
     }
     close() {
