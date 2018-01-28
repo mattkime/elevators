@@ -1,4 +1,6 @@
-module.exports = class Elevator {
+const EventEmitter = require('events');
+
+module.exports = class Elevator extends EventEmitter {
     constructor(floorCount) {
         this.floorCount = floorCount;
         this.currentFloor = 1;
@@ -26,14 +28,18 @@ module.exports = class Elevator {
 
         this.open();
         // fire event if no longe in service
+        if (!isInService()) {
+            this.emit('outOfService', this);
+        }
     }
     open() {
         // report opening doors
         // fire event
+        this.emit('open', this);
     }
     close() {
         //report closing doors
-        // fire event
+        this.emit('close', this);
     }
     isInService() {
         return this.tripsSinceService <= 100;

@@ -6,7 +6,6 @@ module.exports = class ElevatorDispatch {
         for (let i = 0; i < elevatorCount; i++) {
             this.elevators.push(new Elevator(floorCount));
         }
-        // initialize and push elevator instances to array
     }
     getElevatorUnoccupiedCurrentFl(floor) {
         const elevatorsUnoccupiedCurrentFl = this.elevators
