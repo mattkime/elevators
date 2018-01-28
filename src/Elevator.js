@@ -2,6 +2,7 @@ const EventEmitter = require('events');
 
 module.exports = class Elevator extends EventEmitter {
     constructor(floorCount) {
+        super();
         this.floorCount = floorCount;
         this.currentFloor = 1;
         this.tripsMade = 0;
