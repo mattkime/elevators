@@ -4,6 +4,7 @@ module.exports = class Elevator {
         this.currentFloor = 1;
         this.tripsMade = 0;
         this.tripsSinceService = 0;
+        this.occupied = false;
     }
     validateFloor(floor) {
         return floor >= 1 && floor <= this.floorCount;
