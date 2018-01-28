@@ -5,6 +5,15 @@ module.exports = class ElevatorDispatch {
         this.elevators = [];
         // initialize and push elevator instances to array
     }
+    getElevatorUnoccupiedCurrentFl(floor) {
+        const elevatorsUnoccupiedCurrentFl = this.elevators
+            .filter(elevator => !elevator.occupied)
+            .filter(elevator => elevator.currentFloor == floor);
+
+        if (elevatorsUnoccupiedCurrentFl.length) {
+            return elevatorsUnoccupiedCurrentFl[0];
+        }
+    }
     async requestElevator(floor) {
         // find elevator and tell it to go to a given floor
         // is there an unoccupied elevator on this floor
@@ -12,5 +21,6 @@ module.exports = class ElevatorDispatch {
         // closest unoccupied elevator
 
         //return elevator instance via promise, after elevator arrives
+        return getElevatorUnoccupiedCurrentFl(floor);
     }
 }
